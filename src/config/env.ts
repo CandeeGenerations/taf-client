@@ -1,4 +1,7 @@
 interface EnvConfig {
+  clerk: {
+    publishableKey: string
+  }
   aws: {
     accessKeyId: string
     secretAccessKey: string
@@ -38,6 +41,9 @@ function requireEnvVar(name: string): string {
 }
 
 export const env: EnvConfig = {
+  clerk: {
+    publishableKey: requireEnvVar('VITE_CLERK_PUBLISHABLE_KEY'),
+  },
   convexUrl: requireEnvVar('VITE_CONVEX_URL'),
   appVersion: requireEnvVar('VITE_APP_VERSION'),
   isDevelopment: import.meta.env.DEV,
